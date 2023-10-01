@@ -1,98 +1,70 @@
-def isEmpty(stk):
-    if stk == []:
-        return True
+class create_stack:
     
-    else:
-        return False
+    def __init__(self):
+        self.stk = []
+        self.top = None
 
 
-def Push(stk,item):
-    stk.append(item)
-    top = len(stk) - 1
-    
-
-def Pop(stk):
-    if isEmpty(stk):
-        return "Underflow"
-    
-    else:
-        item = stk.pop()
-        if (len(stk) == 0):
-            top = None
-            
-        else:
-            top = len(stk) - 1
-            
-        return item
-    
-    
-def Peek(stk):
-    if isEmpty(stk):
-        return "Underflow"
-    
-    else:
-        top = len(stk) - 1
-        return stk[top]
-    
-
-def Display(stk):
-    if isEmpty(stk):
-        return "Stack is Empty"   
-    
-    else:
-        top = len(stk) - 1
+    def isEmpty(self, stk):
+        if self.stk == []:
+            return True
         
-        print(stk[top],"<--- Top")
-        for i in range(top-1,-1,-1):
-            print(stk[i])
-    
-    
-Stack = []
-top = None
+        else:
+            return False
 
-while True:
-    print()
-    print("Stack Operations")
-    print("1. Push")
-    print("2. Pop")
-    print("3. Peek")
-    print("4. Display Stack")
-    print("5. Exit")
-    
-    ch = int(input("Enter your choice(1-5): "))
-    
-    if ch == 1:
-        print()
-        item = int(input("Enter item: "))
-        Push(Stack,item)
+
+    def Push(self, item):
+        self.stk.append(item)
+        self.top = len(self.stk) - 1
         
-    elif ch == 2:
-        item = Pop(Stack)  
-        if item == "Undeflow":
-            print()
-            print("Underflow! Stack is Empty")
-            
-        else:
-            print()
-            print(f"Popped item is {item}")
-            
-    elif ch == 3:
-        item = Peek(Stack)  
-        if item == "Undeflow":
-            print()
-            print("Underflow! Stack is Empty")
-            
-        else:
-            print()
-            print(f"Topmost item is {item}")
-            
-            
-    elif ch == 4:
-        print()
-        Display(Stack)
+
+    def Pop(self):
+        if self.isEmpty(self.stk):
+            print("Underflow")
         
-    elif ch == 5:
-        break
-    
-    else:
-        print("Invalid Choice!")
+        else:
+            item = self.stk.pop()
+            if (len(self.stk) == 0):
+                self.top = None
+                
+            else:
+                self.top = len(self.stk) - 1
+                
+            print("Popped item is: ", item)
+        
+        
+    def Peek(self):
+        if self.isEmpty(self.stk):
+            print("Underflow")
+        
+        else:
+            self.top = len(self.stk) - 1
+            print("\n")
+            print("Topmost item is: ", self.stk[self.top])
+        
+
+    def Display(self):
+        if self.isEmpty(self.stk):
+            print("Stack is Empty")   
+        
+        else:
+            self.top = len(self.stk) - 1
+            
+            print(self.stk[self.top],"<--- Top")
+            for i in range(self.top-1,-1,-1):
+                print(self.stk[i])
+        
+stack1 = create_stack()
+
+stack1.Push(1)
+stack1.Push(2)
+stack1.Push(3)
+stack1.Push(4)
+stack1.Push(5)
+stack1.Push(6)
+
+stack1.Display()
+
+stack1.Peek()
+stack1.Pop()
+stack1.Display()
